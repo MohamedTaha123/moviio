@@ -1,3 +1,3 @@
 class EpisodeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id , :title, :plot
 end
