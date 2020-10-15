@@ -4,8 +4,7 @@ class Api::PurchasesController < ApplicationController
     json_response(@new_purchase)
   rescue StandardError => e
     json_response({
-    				params: params,
-                    message: 'Something bad happened !!'
+                    message: 'Can\'t process the purchase !!'
                   })
   end
 end

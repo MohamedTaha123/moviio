@@ -2,7 +2,7 @@ class PurchaseService
   def purchase(user_id, purchasable)
     user = User.find(user_id)
     # FIXME: fix this later
-    purchasable_h ||= Purchase.find_by(purchasable: purchasable)
+    purchasable_h = Purchase.find_by(purchasable: purchasable)
     unless user.own_library.include?(purchasable_h)
       # purchase = user.purchases.build
       purchase = user.purchases.build 
@@ -13,7 +13,7 @@ class PurchaseService
       purchase.save!
       purchase
     else
-      raise StandardError => "you already have this in your library"
+      raise StandardError.new "you already have this in your library"
     end
   end
 end
