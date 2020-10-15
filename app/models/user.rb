@@ -15,6 +15,6 @@ class User < ApplicationRecord
 
   # User's Library
   def own_library
-    purchases.merge(Purchase.alive)
+    purchases.merge(Purchase.alive).sort_by(&:remaining_time)
   end
 end

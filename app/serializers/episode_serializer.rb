@@ -18,6 +18,6 @@
 #  season_id  (season_id => seasons.id)
 #
 class EpisodeSerializer < ActiveModel::Serializer
-  cache key: "episode"
+  cache key: 'episode'
   attributes :id, :title, :plot
 end

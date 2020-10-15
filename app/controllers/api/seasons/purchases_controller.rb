@@ -3,7 +3,7 @@ class Api::Seasons::PurchasesController < Api::PurchasesController
 
   private
 
-    def set_purchasable
-      @purchasable = Season.find(params[:season_id])
-    end
+  def set_purchasable
+    @purchasable = Season.find(params[:season_id])
+  end
 end

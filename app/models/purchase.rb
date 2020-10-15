@@ -23,9 +23,13 @@
 #  user_id  (user_id => users.id)
 #
 class Purchase < ApplicationRecord
+  require 'action_view'
+  include ActionView::Helpers::DateHelper
+
   belongs_to :purchasable, polymorphic: true
   belongs_to :user
   before_save :default_values
+  
 
   # enum video_quality: { "HD": 0, "SD": 1 }
 
@@ -38,7 +42,12 @@ class Purchase < ApplicationRecord
 
   # defalut values to price: 9.0, video quality: hd/sd
   def default_values
-  	self.video_quality ||= ["HD","SD"].sample
-  	self.price ||= (5.0...11.0)
+    self.video_quality ||= %w[HD SD].sample
+    self.price ||= (5.0...11.0)
+  end
+
+  # Remaining time
+  def remaining_time
+    distance_of_time_in_words(Time.now ,self.expire_at, include_seconds: true)
   end
 end

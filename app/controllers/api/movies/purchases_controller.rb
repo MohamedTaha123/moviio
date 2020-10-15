@@ -3,7 +3,7 @@ class Api::Movies::PurchasesController < Api::PurchasesController
 
   private
 
-    def set_purchasable
-      @purchasable = Movie.find(params[:movie_id])
-    end
+  def set_purchasable
+    @purchasable = Movie.find(params[:movie_id])
+  end
 end
