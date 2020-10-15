@@ -10,49 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_224226) do
-
-  create_table "episodes", force: :cascade do |t|
-    t.string "title"
-    t.string "plot"
-    t.integer "season_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["season_id"], name: "index_episodes_on_season_id"
+ActiveRecord::Schema.define(version: 20_201_015_000_025) do
+  create_table 'episodes', force: :cascade do |t|
+    t.string 'title'
+    t.string 'plot'
+    t.integer 'season_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['season_id'], name: 'index_episodes_on_season_id'
   end
 
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "plot"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'movies', force: :cascade do |t|
+    t.string 'title'
+    t.string 'plot'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "purchases", force: :cascade do |t|
-    t.integer "video_quality"
-    t.decimal "price", precision: 8, scale: 2
-    t.string "purchasable_type", null: false
-    t.integer "purchasable_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["purchasable_type", "purchasable_id"], name: "index_purchases_on_purchasable_type_and_purchasable_id"
-    t.index ["user_id"], name: "index_purchases_on_user_id"
+  create_table 'purchases', force: :cascade do |t|
+    t.integer 'video_quality'
+    t.decimal 'price', precision: 8, scale: 2
+    t.string 'purchasable_type', null: false
+    t.integer 'purchasable_id', null: false
+    t.integer 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.datetime 'purchased_at'
+    t.datetime 'expire_at'
+    t.index %w[purchasable_type purchasable_id], name: 'index_purchases_on_purchasable_type_and_purchasable_id'
+    t.index ['user_id'], name: 'index_purchases_on_user_id'
   end
 
-  create_table "seasons", force: :cascade do |t|
-    t.string "title"
-    t.string "plot"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'seasons', force: :cascade do |t|
+    t.string 'title'
+    t.string 'plot'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'number'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "episodes", "seasons"
-  add_foreign_key "purchases", "users"
+  add_foreign_key 'episodes', 'seasons'
+  add_foreign_key 'purchases', 'users'
 end
