@@ -1,14 +1,14 @@
 # == Schema Information
 #
-# Table name: movies
+# Table name: users
 #
 #  id         :integer          not null, primary key
-#  plot       :string
-#  title      :string
+#  email      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class MovieSerializer < ActiveModel::Serializer
-  cache key: 'movie'
-  attributes :id, :title, :plot
+FactoryBot.define do
+  factory :user do
+    email { 'MyString' }
+  end
 end

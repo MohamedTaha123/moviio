@@ -3,6 +3,7 @@
 # Table name: episodes
 #
 #  id         :integer          not null, primary key
+#  number     :integer
 #  plot       :string
 #  title      :string
 #  created_at :datetime         not null

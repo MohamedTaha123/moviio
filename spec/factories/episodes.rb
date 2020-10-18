@@ -18,11 +18,11 @@
 #
 #  season_id  (season_id => seasons.id)
 #
-class Episode < ApplicationRecord
-  belongs_to :season
-
-  validates :number, presence: true,
-                     numericality: { only_integer: true },
-                     uniqueness: { scope: :season_id }
-  validates_presence_of :title, :plot
+FactoryBot.define do
+  factory :episode do
+    sequence(:number) { |n| n }
+    title { 'MyString' }
+    plot { 'MyText' }
+    season
+  end
 end

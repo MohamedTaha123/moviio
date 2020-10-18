@@ -8,7 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class MovieSerializer < ActiveModel::Serializer
-  cache key: 'movie'
-  attributes :id, :title, :plot
+FactoryBot.define do
+  factory :movie do
+    title { 'MyString' }
+    plot { 'MyText' }
+  end
 end

@@ -14,4 +14,6 @@ class Season < ApplicationRecord
   has_many :episodes, -> { order(number: :desc) }, dependent: :delete_all
 
   validates_presence_of :title, :plot
+
+  scope :list, -> { includes(:episodes).order(created_at: :desc) }
 end

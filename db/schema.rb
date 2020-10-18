@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_015_000_025) do
+ActiveRecord::Schema.define(version: 20_201_018_133_925) do
   create_table 'episodes', force: :cascade do |t|
     t.string 'title'
     t.string 'plot'
     t.integer 'season_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'number'
     t.index ['season_id'], name: 'index_episodes_on_season_id'
   end
 
