@@ -8,7 +8,7 @@ RSpec.describe Purchase do
 
   context 'scopes' do
     before do
-      @movie  = FactoryBot.create(:movie)
+      @movie = FactoryBot.create(:movie)
       @user = FactoryBot.create(:user)
       @purchase = FactoryBot.create(:purchase, purchasable: @movie, user: @user)
     end

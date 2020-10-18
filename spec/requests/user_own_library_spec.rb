@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe "User's own library endpoint" do
   let(:user) { FactoryBot.create(:user)}
   let(:purchasable1) { FactoryBot.create(:movie)}
@@ -10,25 +9,23 @@ RSpec.describe "User's own library endpoint" do
 
   before do
     FactoryBot.create(:purchase, purchasable: purchasable4, user: user,
-      purchased_at: 15.days.ago, expire_at: 13.days.ago)
+                                 purchased_at: 15.days.ago, expire_at: 13.days.ago)
 
     FactoryBot.create(:purchase, purchasable: purchasable3, user: user,
-      purchased_at: 1.day.ago, expire_at: 1.day.from_now)
+                                 purchased_at: 1.day.ago, expire_at: 1.day.from_now)
 
     FactoryBot.create(:purchase, purchasable: purchasable1, user: user,
-      purchased_at: Time.current, expire_at: 2.days.from_now)
+                                 purchased_at: Time.current, expire_at: 2.days.from_now)
 
     FactoryBot.create(:purchase, purchasable: purchasable2, user: user,
-      purchased_at: Time.current, expire_at: 2.days.from_now)
+                                 purchased_at: Time.current, expire_at: 2.days.from_now)
 
     get api_user_library_path(user)
   end
 
   # FIXME: Must fix later
-  it "returns the library ordered by time left to watch the content" do
+  it 'returns the library ordered by time left to watch the content' do
     key = json
-    expect(json.map{|i| i['id']}).to eq [purchasable3, purchasable1, purchasable2].map(&:id)
+    expect(json.map { |i| i['id']}).to eq [purchasable3, purchasable1, purchasable2].map(&:id)
   end
-
-
 end
