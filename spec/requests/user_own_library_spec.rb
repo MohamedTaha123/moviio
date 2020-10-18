@@ -26,7 +26,6 @@ RSpec.describe "User's own library endpoint" do
 
   # FIXME: Must fix later
   it "returns the library ordered by time left to watch the content" do
-  	puts json
     key = json
     expect(json.map{|i| i['id']}).to eq [purchasable3, purchasable1, purchasable2].map(&:id)
   end
