@@ -24,6 +24,7 @@ RSpec.describe "User's own library endpoint" do
     get api_user_library_path(user)
   end
 
+  # FIXME: Must fix later
   it "returns the library ordered by time left to watch the content" do
   	puts json
     key = json

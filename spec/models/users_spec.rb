@@ -22,7 +22,8 @@ RSpec.describe User, type: :model do
 
     end
     it "returns all alive purchasables for the user" do
-      expect(user.own_library).to include [purchasable2.purchases]
+      puts user.own_library
+      expect(user.own_library.map(&:purchasable)).to eq [purchasable2]
     end
 
   end
