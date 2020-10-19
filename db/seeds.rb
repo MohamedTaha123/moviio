@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+user_1 = User.create(email: "donald.trump@moviio.io")
+user_2 = User.create(email: "bruce.willies@moviio.io")
+
+# Seed Movies
+5.times do
+	Movie.create(plot: Faker::Movie.quote, title: Faker::Movie.title)
+end
+
+# Seed Seasons
+2.times do 
+	season = Season.create(plot: "plot ", title: Faker::Movie.title)
+end
+
+
+# Seed Episodes
+5.times { |n|  
+	Episode.create!(title: "episode_#{n}", plot: "plot_#{n}", season_id: Season.first.id, number: n)
+
+	}
