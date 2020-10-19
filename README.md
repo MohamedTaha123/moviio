@@ -23,6 +23,10 @@ Run the following commands to create and setup the database.
 bundle exec rake db:create
 bundle exec rake db:setup
 ```
+Seed Data.
+```ruby
+rails db:seed
+```
 
 ##### 3. Start the Rails server
 
